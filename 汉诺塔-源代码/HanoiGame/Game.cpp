@@ -1,6 +1,6 @@
 #include "Game.h"
 #include "graphics.h"
-#include <mmsystem.h>//°üº¬¶àÃ½ÌåÉè±¸½Ó¿ÚÍ·ÎÄ¼ş
+#include <mmsystem.h>//åŒ…å«å¤šåª’ä½“è®¾å¤‡æ¥å£å¤´æ–‡ä»¶
 #include <iostream>
 #include <vector>
 #include "Text.h"
@@ -9,65 +9,65 @@
 #include "MyClock.h"
 #include "graphics.h"
 #include "windows.h"
-#pragma comment(lib,"Winmm.lib")//¼ÓÔØ¾²Ì¬¿â£¬²¥·ÅÒôÀÖ
-//¹¹Ôìº¯Êı
+#pragma comment(lib,"Winmm.lib")//åŠ è½½é™æ€åº“ï¼Œæ’­æ”¾éŸ³ä¹
+//æ„é€ å‡½æ•°
 Game::Game()
-	:menu_text_hnt("ººÅµËş", 100, 250, 60), VolumeButton("¹Ø±ÕÒôÀÖ", 0, 579, 100, 20, 20)
-	, level_text_hnt("Ñ¡ÔñÄÑ¶È", 80, 250, 50), MenuButton("Ö÷²Ëµ¥", 700, 579, 100, 20, 20)
-	, preStepButton("ÉÏÒ»²½", 150, 450, 200, 50, 50), nexStepButton("ÏÂÒ»²½", 450, 450, 200, 50, 50)
-	, saveButton("±£´æ", 345, 525, 110, 50)
-	, prePageButton("ÉÏÒ»Ò³", 150, 510, 150, 30, 30), nexPageButton("ÏÂÒ»Ò³", 350, 510, 150, 30, 30)
-	, staPageButton("Ê×Ò³", 150, 550, 150, 30, 30), endPageButton("Î²Ò³", 350, 550, 150, 30, 30)
-	, saveRecordButton("±£´æ¼ÇÂ¼", 550, 510, 150, 30, 30)
+	:menu_text_hnt("æ±‰è¯ºå¡”", 100, 250, 60), VolumeButton("å…³é—­éŸ³ä¹", 0, 579, 100, 20, 20)
+	, level_text_hnt("é€‰æ‹©éš¾åº¦", 80, 250, 50), MenuButton("ä¸»èœå•", 700, 579, 100, 20, 20)
+	, preStepButton("ä¸Šä¸€æ­¥", 150, 450, 200, 50, 50), nexStepButton("ä¸‹ä¸€æ­¥", 450, 450, 200, 50, 50)
+	, saveButton("ä¿å­˜", 345, 525, 110, 50)
+	, prePageButton("ä¸Šä¸€é¡µ", 150, 510, 150, 30, 30), nexPageButton("ä¸‹ä¸€é¡µ", 350, 510, 150, 30, 30)
+	, staPageButton("é¦–é¡µ", 150, 550, 150, 30, 30), endPageButton("å°¾é¡µ", 350, 550, 150, 30, 30)
+	, saveRecordButton("ä¿å­˜è®°å½•", 550, 510, 150, 30, 30)
 {
-	//³õÊ¼»¯´°¿Ú
-	initgraph(w, h, SHOWCONSOLE);//´°¿Ú³õÊ¼»¯£¬´ø¿ØÖÆÌ¨
-	//initgraph(w, h);	//´°¿Ú³õÊ¼»¯
-	hnd = GetHWnd();		//´°¿Ú¾ä±ú
-	SetWindowText(hnd, "ººÅµËş|¼Æ¿Æ¶şÑ§Î»1°à 202283730040 Ğí³½ÌÎ");//ÉèÖÃ´°¿Ú±êÌâ
-	loadimage(&bkImage, "./sources/bkImage.jpg", 800, 600);//¶ÁÈ¡±³¾°ÎÄ¼ş
-	loadimage(&htpImage, "./sources/HowToPlay.png", 800, 600);//¶ÁÈ¡ÓÎÏ·ËµÃ÷ÎÄ¼ş
-	setbkmode(TRANSPARENT);//ÉèÖÃ±³¾°Ä£Ê½£¬Í¸Ã÷£¨ÎÄ×Ö£©
-	//Ö÷½çÃæ°´Å¥³õÊ¼»¯
-	menu_btns.push_back(new PushButton("ĞÂÓÎÏ·"));
-	menu_btns.push_back(new PushButton("¶ÁÈ¡´æµµ"));
-	menu_btns.push_back(new PushButton("ÅÅĞĞ°ñ"));
-	menu_btns.push_back(new PushButton("ÓÎÏ·½ÌÑ§"));
-	menu_btns.push_back(new PushButton("ÓÎÏ·¼ÇÂ¼"));
-	menu_btns.push_back(new PushButton("ÓÎÏ·ËµÃ÷"));
-	menu_btns.push_back(new PushButton("ÍË³öÓÎÏ·"));
-	//ÉèÖÃ°´¼üÎ»ÖÃ
+	//åˆå§‹åŒ–çª—å£
+	initgraph(w, h, SHOWCONSOLE);//çª—å£åˆå§‹åŒ–ï¼Œå¸¦æ§åˆ¶å°
+	//initgraph(w, h);	//çª—å£åˆå§‹åŒ–
+	hnd = GetHWnd();		//çª—å£å¥æŸ„
+	SetWindowText(hnd, "æ±‰è¯ºå¡”|å—ä¿¡å¤§çš„ä¸€ä½å’¸é±¼");//è®¾ç½®çª—å£æ ‡é¢˜
+	loadimage(&bkImage, "./sources/bkImage.jpg", 800, 600);//è¯»å–èƒŒæ™¯æ–‡ä»¶
+	loadimage(&htpImage, "./sources/HowToPlay.png", 800, 600);//è¯»å–æ¸¸æˆè¯´æ˜æ–‡ä»¶
+	setbkmode(TRANSPARENT);//è®¾ç½®èƒŒæ™¯æ¨¡å¼ï¼Œé€æ˜ï¼ˆæ–‡å­—ï¼‰
+	//ä¸»ç•Œé¢æŒ‰é’®åˆå§‹åŒ–
+	menu_btns.push_back(new PushButton("æ–°æ¸¸æˆ"));
+	menu_btns.push_back(new PushButton("è¯»å–å­˜æ¡£"));
+	menu_btns.push_back(new PushButton("æ’è¡Œæ¦œ"));
+	menu_btns.push_back(new PushButton("æ¸¸æˆæ•™å­¦"));
+	menu_btns.push_back(new PushButton("æ¸¸æˆè®°å½•"));
+	menu_btns.push_back(new PushButton("æ¸¸æˆè¯´æ˜"));
+	menu_btns.push_back(new PushButton("é€€å‡ºæ¸¸æˆ"));
+	//è®¾ç½®æŒ‰é”®ä½ç½®
 	for (int i = 0; i < menu_btns.size(); i++)
 	{
-		menu_btns[i]->setFixedSize(300, 50);//ÉèÖÃ°´¼ü¿í¸ß
-		//¼ÆËã°´¼üÎ»ÖÃ
+		menu_btns[i]->setFixedSize(300, 50);//è®¾ç½®æŒ‰é”®å®½é«˜
+		//è®¡ç®—æŒ‰é”®ä½ç½®
 		int bx = (w - menu_btns[i]->width()) / 2;
 		int by = i * (menu_btns[i]->height() + 10) + 180;
-		menu_btns[i]->move(bx, by);//ÉèÖÃ°´¼üÎ»ÖÃ
+		menu_btns[i]->move(bx, by);//è®¾ç½®æŒ‰é”®ä½ç½®
 	}
-	//ÄÑ¶È°´¼ü³õÊ¼»¯
+	//éš¾åº¦æŒ‰é”®åˆå§‹åŒ–
 	level_btns.push_back(new PushButton("1"));
 	level_btns.push_back(new PushButton("2"));
 	level_btns.push_back(new PushButton("3"));
 	level_btns.push_back(new PushButton("4"));
 	level_btns.push_back(new PushButton("5"));
 	level_btns.push_back(new PushButton("6"));
-	//ÉèÖÃ°´¼üÎ»ÖÃ
+	//è®¾ç½®æŒ‰é”®ä½ç½®
 	for (int i = 0; i < level_btns.size(); i++)
 	{
-		level_btns[i]->setFixedSize(200, 50);//ÉèÖÃ°´¼ü¿í¸ß
-		//¼ÆËã°´¼üÎ»ÖÃ
+		level_btns[i]->setFixedSize(200, 50);//è®¾ç½®æŒ‰é”®å®½é«˜
+		//è®¡ç®—æŒ‰é”®ä½ç½®
 		int bx = (w - level_btns[i]->width()) / 2;
 		int by = i * (level_btns[i]->height() + 10) + 180;
-		level_btns[i]->move(bx, by);//ÉèÖÃ°´¼üÎ»ÖÃ
+		level_btns[i]->move(bx, by);//è®¾ç½®æŒ‰é”®ä½ç½®
 	}
-	//¶ÁÈ¡ÎÄ¼ş
-	ReadRankFile();//¶ÁÈ¡ÅÅĞĞ°ñ
-	readRecord();//¶ÁÈ¡ÓÎÏ·¼ÇÂ¼
+	//è¯»å–æ–‡ä»¶
+	ReadRankFile();//è¯»å–æ’è¡Œæ¦œ
+	readRecord();//è¯»å–æ¸¸æˆè®°å½•
 }
 Game::~Game()
 {
-	//ÊÍ·Åmenu_btns°´¼ü
+	//é‡Šæ”¾menu_btnsæŒ‰é”®
 	for (std::vector<PushButton*>::iterator it = menu_btns.begin(); it != menu_btns.end(); it++)
 	{
 		if (NULL != *it)
@@ -77,26 +77,26 @@ Game::~Game()
 		}
 	}
 	menu_btns.clear();
-	std::cout << "ÊÍ·ÅÄÚ´æ³É¹¦£¡\n";
+	std::cout << "é‡Šæ”¾å†…å­˜æˆåŠŸï¼\n";
 }
-//ÓÎÏ·³õÊ¼»¯
+//æ¸¸æˆåˆå§‹åŒ–
 void Game::init()
 {
-	//²¥·ÅÒôÀÖ
+	//æ’­æ”¾éŸ³ä¹
 	BGM();
 }
-//ÓëÓÃ»§ÊäÈëÎŞ¹ØµÄĞÅÏ¢
+//ä¸ç”¨æˆ·è¾“å…¥æ— å…³çš„ä¿¡æ¯
 void Game::undateWithoutInput()
 {
-	switch (op)//¸ù¾İÏµÍ³×´Ì¬Ö´ĞĞ²»Í¬²Ù×÷
+	switch (op)//æ ¹æ®ç³»ç»ŸçŠ¶æ€æ‰§è¡Œä¸åŒæ“ä½œ
 	{
-	case readFile://¶Áµµ
+	case readFile://è¯»æ¡£
 	case newGame_Game:
-		finalTime = timeShift + getClock();//¸üĞÂµ±Ç°»¨·ÑÊ±¼ä
-		if (C.size() == level)//ÓÎÏ·Ê¤Àû
+		finalTime = timeShift + getClock();//æ›´æ–°å½“å‰èŠ±è´¹æ—¶é—´
+		if (C.size() == level)//æ¸¸æˆèƒœåˆ©
 			gameover();
 		switch (level)
-		{//ÓÎÏ·Ê§°Ü
+		{//æ¸¸æˆå¤±è´¥
 		case 1:if (10 - finalTime <= 0) gameover(0); break;
 		case 2:if (30 - finalTime <= 0) gameover(0); break;
 		case 3:if (60 - finalTime <= 0) gameover(0); break;
@@ -105,34 +105,34 @@ void Game::undateWithoutInput()
 		case 6:if (600 - finalTime <= 0) gameover(0); break;
 		}
 		break;
-	case tutorial_Game://ÓÎÏ·½ÌÑ§Ä£Ê½
-		if (C.size() == level)//ÑİÊ¾½áÊø
+	case tutorial_Game://æ¸¸æˆæ•™å­¦æ¨¡å¼
+		if (C.size() == level)//æ¼”ç¤ºç»“æŸ
 			tutorialover();
 		break;
 	}
 }
-// ÓëÓÃ»§ÊäÈëÓĞ¹ØµÄĞÅÏ¢
+// ä¸ç”¨æˆ·è¾“å…¥æœ‰å…³çš„ä¿¡æ¯
 void Game::undateWithInput()
 {
-	// »ñÈ¡Ò»ÌõÊó±ê»ò°´¼üÏûÏ¢
+	// è·å–ä¸€æ¡é¼ æ ‡æˆ–æŒ‰é”®æ¶ˆæ¯
 	ExMessage msg;
-	//ÈôÏûÏ¢´æÔÚ£¬ÔòÖ´ĞĞ¶ÔÓ¦ĞĞÎª£¬·ñÔòÊ²Ã´Ò²²»¸É
+	//è‹¥æ¶ˆæ¯å­˜åœ¨ï¼Œåˆ™æ‰§è¡Œå¯¹åº”è¡Œä¸ºï¼Œå¦åˆ™ä»€ä¹ˆä¹Ÿä¸å¹²
 	if (peekmessage(&msg, EX_MOUSE | EX_KEY))
 	{
-		//Ö÷²Ëµ¥°´¼ü
+		//ä¸»èœå•æŒ‰é”®
 		MenuButton.eventLoop(msg);
 		if (MenuButton.isClicked()) { MainMenu(); }
-		//¸ù¾İÏµÍ³×´Ì¬Ö´ĞĞ²»Í¬²Ù×÷
+		//æ ¹æ®ç³»ç»ŸçŠ¶æ€æ‰§è¡Œä¸åŒæ“ä½œ
 		switch (op)
 		{
 		case menu:
 			for (int i = 0; i < menu_btns.size(); i++)
-			{//Ö÷²Ëµ¥¸÷°´¼ü
-				menu_btns[i]->eventLoop(msg);//´«ÈëÏûÏ¢
+			{//ä¸»èœå•å„æŒ‰é”®
+				menu_btns[i]->eventLoop(msg);//ä¼ å…¥æ¶ˆæ¯
 				if (menu_btns[i]->isClicked())
 				{
 					switch (i)
-					{//µÚi¸ö°´¼ü±»µã»÷
+					{//ç¬¬iä¸ªæŒ‰é”®è¢«ç‚¹å‡»
 					case 0:
 						op = newGame;
 						clearTower();
@@ -141,8 +141,8 @@ void Game::undateWithInput()
 					case 1:
 						op = readFile;
 						clearTower();
-						resetClock();//ÖØÖÃÊ±ÖÓ
-						loadGame();//¶ÁÈ¡´æ´¢µÄËş×´Ì¬
+						resetClock();//é‡ç½®æ—¶é’Ÿ
+						loadGame();//è¯»å–å­˜å‚¨çš„å¡”çŠ¶æ€
 						break;
 					case 2:op = rank; break;
 					case 3:
@@ -158,31 +158,31 @@ void Game::undateWithInput()
 			}
 			VolumeButton.eventLoop(msg);
 			if (VolumeButton.isClicked())
-			{//ÒôÁ¿¿ª¹Ø
+			{//éŸ³é‡å¼€å…³
 
-				Volume = !Volume;//ÒôÀÖ×´Ì¬È¡·´
-				if (Volume)//µ±Ç°ÒôÀÖ×´Ì¬Ó¦Îª¿ª
+				Volume = !Volume;//éŸ³ä¹çŠ¶æ€å–å
+				if (Volume)//å½“å‰éŸ³ä¹çŠ¶æ€åº”ä¸ºå¼€
 				{
-					VolumeButton.setText("¹Ø±ÕÒôÀÖ");
+					VolumeButton.setText("å…³é—­éŸ³ä¹");
 					mciSendString("open ./sources/bkMusic.mp3 alias BGM", 0, 0, 0);
-					mciSendString("play BGM repeat", 0, 0, 0);//ÖØ¸´²¥·Å
+					mciSendString("play BGM repeat", 0, 0, 0);//é‡å¤æ’­æ”¾
 				}
-				else//µ±Ç°ÒôÀÖ×´Ì¬Ó¦Îª¹Ø
+				else//å½“å‰éŸ³ä¹çŠ¶æ€åº”ä¸ºå…³
 				{
-					VolumeButton.setText("´ò¿ªÒôÀÖ");
-					mciSendString("close BGM", 0, 0, 0);//¹Ø±ÕÒôÀÖ
+					VolumeButton.setText("æ‰“å¼€éŸ³ä¹");
+					mciSendString("close BGM", 0, 0, 0);//å…³é—­éŸ³ä¹
 				}
 			}
 			break;
 		case newGame:
 			for (int i = 0; i < level_btns.size(); i++)
-			{//Ö÷²Ëµ¥¸÷°´¼ü
-				level_btns[i]->eventLoop(msg);//´«ÈëÏûÏ¢
+			{//ä¸»èœå•å„æŒ‰é”®
+				level_btns[i]->eventLoop(msg);//ä¼ å…¥æ¶ˆæ¯
 				if (level_btns[i]->isClicked())
 				{
-					level = i + 1;//ÄÑ¶È=i+1
+					level = i + 1;//éš¾åº¦=i+1
 					initTower(level);
-					resetClock();//Æô¶¯Ê±ÖÓ
+					resetClock();//å¯åŠ¨æ—¶é’Ÿ
 					op = newGame_Game;
 				}
 			}
@@ -194,16 +194,16 @@ void Game::undateWithInput()
 			moveC.eventLoop(msg);
 			saveButton.eventLoop(msg);
 			if (saveButton.isClicked())
-			{//±£´æÓÎÏ·
-				std::cout << "±£´æÓÎÏ·£¬ÄÑ¶ÈÎª" << level << "\n";
+			{//ä¿å­˜æ¸¸æˆ
+				std::cout << "ä¿å­˜æ¸¸æˆï¼Œéš¾åº¦ä¸º" << level << "\n";
 				saveGame();
 			}
 			if (moveA.isClicked())
-			{//ËşA±»µã»÷
+			{//å¡”Aè¢«ç‚¹å‡»
 				moveA.traIsStart();
-				if (!startTower)//Î´¿ªÊ¼
+				if (!startTower)//æœªå¼€å§‹
 					startTower = 1;
-				else if (!endTower)//¿ªÊ¼ÁË£¬½ÓÊÕµÚ¶ş¸ö
+				else if (!endTower)//å¼€å§‹äº†ï¼Œæ¥æ”¶ç¬¬äºŒä¸ª
 				{
 					endTower = 1;
 					moveTower(startTower, endTower);
@@ -213,11 +213,11 @@ void Game::undateWithInput()
 				}
 			}
 			if (moveB.isClicked())
-			{//ËşB±»µã»÷
+			{//å¡”Bè¢«ç‚¹å‡»
 				moveB.traIsStart();
-				if (!startTower)//Î´¿ªÊ¼
+				if (!startTower)//æœªå¼€å§‹
 					startTower = 2;
-				else if (!endTower)//¿ªÊ¼ÁË£¬½ÓÊÕµÚ¶ş¸ö
+				else if (!endTower)//å¼€å§‹äº†ï¼Œæ¥æ”¶ç¬¬äºŒä¸ª
 				{
 					endTower = 2;
 					moveTower(startTower, endTower);
@@ -227,11 +227,11 @@ void Game::undateWithInput()
 				}
 			}
 			if (moveC.isClicked())
-			{//ËşC±»µã»÷
+			{//å¡”Cè¢«ç‚¹å‡»
 				moveC.traIsStart();
-				if (!startTower)//Î´¿ªÊ¼
+				if (!startTower)//æœªå¼€å§‹
 					startTower = 3;
-				else if (!endTower)//¿ªÊ¼ÁË£¬½ÓÊÕµÚ¶ş¸ö
+				else if (!endTower)//å¼€å§‹äº†ï¼Œæ¥æ”¶ç¬¬äºŒä¸ª
 				{
 					endTower = 3;
 					moveTower(startTower, endTower);
@@ -243,11 +243,11 @@ void Game::undateWithInput()
 			break;
 		case tutorial:
 			for (int i = 0; i < level_btns.size(); i++)
-			{//¸÷ÄÑ¶È°´¼ü
-				level_btns[i]->eventLoop(msg);//´«ÈëÏûÏ¢
+			{//å„éš¾åº¦æŒ‰é”®
+				level_btns[i]->eventLoop(msg);//ä¼ å…¥æ¶ˆæ¯
 				if (level_btns[i]->isClicked())
 				{
-					level = i + 1;//ÄÑ¶È=i+1
+					level = i + 1;//éš¾åº¦=i+1
 					initTower(level);
 					sloveTower(level, 1, 2, 3);
 					op = tutorial_Game;
@@ -287,44 +287,44 @@ void Game::undateWithInput()
 			if (saveRecordButton.isClicked()) { saveRecord(); }
 			break;
 		}
-		switch (msg.message)//Êä³öµ÷ÊÔĞÅÏ¢£¬¿É¶ªÆú
+		switch (msg.message)//è¾“å‡ºè°ƒè¯•ä¿¡æ¯ï¼Œå¯ä¸¢å¼ƒ
 		{
-		case WM_LBUTTONDOWN://×ó¼ü°´ÏÂ
-			std::cout << "×ó¼ü°´ÏÂ" << "(" << msg.x << "," << msg.y << ")" << std::endl;
+		case WM_LBUTTONDOWN://å·¦é”®æŒ‰ä¸‹
+			std::cout << "å·¦é”®æŒ‰ä¸‹" << "(" << msg.x << "," << msg.y << ")" << std::endl;
 			break;
-		case WM_KEYDOWN://ESC±»°´ÏÂ
+		case WM_KEYDOWN://ESCè¢«æŒ‰ä¸‹
 			if (msg.vkcode == VK_ESCAPE) { MainMenu(); }
 		}
 	}
 }
 
-//ÏÔÊ¾ÓÎÏ·»­Ãæ
+//æ˜¾ç¤ºæ¸¸æˆç”»é¢
 void Game::GameDraw()
 {
-	//»æÖÆ±³¾°
+	//ç»˜åˆ¶èƒŒæ™¯
 	putimage(0, 0, &bkImage);
-	switch (op)//¸ù¾İÏµÍ³µÄ×´Ì¬ÏÔÊ¾²»Í¬µÄ½çÃæ
+	switch (op)//æ ¹æ®ç³»ç»Ÿçš„çŠ¶æ€æ˜¾ç¤ºä¸åŒçš„ç•Œé¢
 	{
 	case menu:
-		//»æÖÆ±êÌâ
+		//ç»˜åˆ¶æ ‡é¢˜
 		menu_text_hnt.showText();
-		//»æÖÆÒôÀÖ°´¼ü
+		//ç»˜åˆ¶éŸ³ä¹æŒ‰é”®
 		VolumeButton.show();
 		for (auto btn : menu_btns)
 		{
 			btn->show();
 		}
 		break;
-	case tutorial://½Ì³ÌÓëĞÂÓÎÏ·½çÃæ1ÏàÍ¬
+	case tutorial://æ•™ç¨‹ä¸æ–°æ¸¸æˆç•Œé¢1ç›¸åŒ
 	case newGame:
-		//»æÖÆ±êÌâ
+		//ç»˜åˆ¶æ ‡é¢˜
 		level_text_hnt.showText();
 		for (auto btn : level_btns)
 		{
 			btn->show();
 		}
 		break;
-	case readFile://¶ÁµµºÍÕıÊ½ÓÎÏ·½çÃæÍêÈ«ÏàÍ¬£¬Ö»ÊÇ½øÈëÊ±Ö´ĞĞµÄ²Ù×÷²»Í¬
+	case readFile://è¯»æ¡£å’Œæ­£å¼æ¸¸æˆç•Œé¢å®Œå…¨ç›¸åŒï¼Œåªæ˜¯è¿›å…¥æ—¶æ‰§è¡Œçš„æ“ä½œä¸åŒ
 	case newGame_Game:
 		showTower();
 		moveA.show();
@@ -353,55 +353,55 @@ void Game::GameDraw()
 		putimage(0, 0, &htpImage);
 		break;
 	}
-	//ÏÔÊ¾Ö÷²Ëµ¥°´¼ü
+	//æ˜¾ç¤ºä¸»èœå•æŒ‰é”®
 	MenuButton.show();
 }
-//ÓÎÏ·±³¾°ÒôÀÖ
+//æ¸¸æˆèƒŒæ™¯éŸ³ä¹
 void Game::BGM()
 {
-	//´ò¿ªÒôÀÖ
+	//æ‰“å¼€éŸ³ä¹
 	mciSendString("open ./sources/bkMusic.mp3 alias BGM", 0, 0, 0);
-	mciSendString("play BGM repeat", 0, 0, 0);//ÖØ¸´²¥·Å
+	mciSendString("play BGM repeat", 0, 0, 0);//é‡å¤æ’­æ”¾
 }
-//ÓÎÏ·Ö÷Ñ­»·
+//æ¸¸æˆä¸»å¾ªç¯
 void Game::loop()
 {
-	BeginBatchDraw();		//¿ªÊ¼ÅúÁ¿»æÍ¼
-	while (op != exitGame)//ÓÎÏ·Î´½áÊø
+	BeginBatchDraw();		//å¼€å§‹æ‰¹é‡ç»˜å›¾
+	while (op != exitGame)//æ¸¸æˆæœªç»“æŸ
 	{
-		GameDraw();				//»æÖÆÓÎÏ·»­Ãæ--ÕâÀï»­µÄÍ¼ÔÚºóÌ¨
-		FlushBatchDraw();		//Ë¢ĞÂÅúÁ¿»æÍ¼--Í¼ÔÚÕâÀï±»Ë¢ĞÂ
-		undateWithoutInput();	//ÓëÓÃ»§ÊäÈëÎŞ¹ØµÄĞÅÏ¢
-		undateWithInput();		//ÓëÓÃ»§ÊäÈëÓĞ¹ØµÄĞÅÏ¢
+		GameDraw();				//ç»˜åˆ¶æ¸¸æˆç”»é¢--è¿™é‡Œç”»çš„å›¾åœ¨åå°
+		FlushBatchDraw();		//åˆ·æ–°æ‰¹é‡ç»˜å›¾--å›¾åœ¨è¿™é‡Œè¢«åˆ·æ–°
+		undateWithoutInput();	//ä¸ç”¨æˆ·è¾“å…¥æ— å…³çš„ä¿¡æ¯
+		undateWithInput();		//ä¸ç”¨æˆ·è¾“å…¥æœ‰å…³çš„ä¿¡æ¯
 	}
-	EndBatchDraw();//½áÊøÅúÁ¿»æÍ¼
+	EndBatchDraw();//ç»“æŸæ‰¹é‡ç»˜å›¾
 }
 
 void Game::gameover(int gameOverState/*=1*/)
 {
-	//Ôö¼Ó£¬±£´æÓÎÏ·¼ÇÂ¼
+	//å¢åŠ ï¼Œä¿å­˜æ¸¸æˆè®°å½•
 	addRecord(level, stepNum + stepShift, finalTime, gameOverState);
 	saveRecord();
-	//²Ëµ¥×´Ì¬Ë¢ĞÂ
+	//èœå•çŠ¶æ€åˆ·æ–°
 	op = menu;
-	//µ¯³ö´°¿Ú£¬ÌáÊ¾ÓÃ»§²Ù×÷
+	//å¼¹å‡ºçª—å£ï¼Œæç¤ºç”¨æˆ·æ“ä½œ
 	std::string text;
 	if (gameOverState)
-	{//Ó®ÁË
-		newRank(hnd, level, finalTime);//¸üĞÂÅÅĞĞ°ñ
-		text.append("ÄãÓ®ÁË£¡ÓÃÊ±");
+	{//èµ¢äº†
+		newRank(hnd, level, finalTime);//æ›´æ–°æ’è¡Œæ¦œ
+		text.append("ä½ èµ¢äº†ï¼ç”¨æ—¶");
 		text.append(std::to_string(finalTime / 60));
-		text.append("·Ö");
+		text.append("åˆ†");
 		text.append(std::to_string(finalTime % 60));
-		text.append("Ãë£¡");
-		int isok = MessageBox(hnd, text.c_str(), "ÌáÊ¾", MB_OK);
-		if (isok == IDOK) { printf("Äãµã»÷ÁËÈ·¶¨\n"); }
+		text.append("ç§’ï¼");
+		int isok = MessageBox(hnd, text.c_str(), "æç¤º", MB_OK);
+		if (isok == IDOK) { printf("ä½ ç‚¹å‡»äº†ç¡®å®š\n"); }
 	}
-	else//ÊäÁË
+	else//è¾“äº†
 	{
-		text.append("ÄãÊäÁË£¡");
-		int isok = MessageBox(hnd, text.c_str(), "ÌáÊ¾", MB_OK);
-		if (isok == IDOK) { printf("Äãµã»÷ÁËÈ·¶¨\n"); }
+		text.append("ä½ è¾“äº†ï¼");
+		int isok = MessageBox(hnd, text.c_str(), "æç¤º", MB_OK);
+		if (isok == IDOK) { printf("ä½ ç‚¹å‡»äº†ç¡®å®š\n"); }
 	}
 }
 
@@ -409,19 +409,19 @@ void Game::tutorialover()
 {
 	clearStep();
 	clearTower();
-	//²Ëµ¥×´Ì¬Ë¢ĞÂ
+	//èœå•çŠ¶æ€åˆ·æ–°
 	op = menu;
-	//µ¯³ö´°¿Ú£¬ÌáÊ¾ÓÃ»§²Ù×÷
-	int isok = MessageBox(hnd, "½ÌÑ§½áÊø£¡", "ÌáÊ¾", MB_OK);
+	//å¼¹å‡ºçª—å£ï¼Œæç¤ºç”¨æˆ·æ“ä½œ
+	int isok = MessageBox(hnd, "æ•™å­¦ç»“æŸï¼", "æç¤º", MB_OK);
 	if (isok == IDOK)
-		printf("Äãµã»÷ÁËÈ·¶¨\n");
+		printf("ä½ ç‚¹å‡»äº†ç¡®å®š\n");
 }
 
 void Game::showTimeRemain(int level)
 {
 	int rtime = 0;
 	switch (level)
-	{//ÓÎÏ·Ê§°Ü
+	{//æ¸¸æˆå¤±è´¥
 	case 1:rtime = 10 - finalTime; break;
 	case 2:rtime = 30 - finalTime; break;
 	case 3:rtime = 60 - finalTime; break;
@@ -430,13 +430,13 @@ void Game::showTimeRemain(int level)
 	case 6:rtime = 600 - finalTime; break;
 	}
 	std::string timetext;
-	timetext.append("Ê£Óà");
+	timetext.append("å‰©ä½™");
 	timetext.append(std::to_string(rtime / 60));
-	timetext.append("·Ö");
+	timetext.append("åˆ†");
 	timetext.append(std::to_string(rtime % 60));
-	timetext.append("Ãë");
-	settextcolor(BLACK);//ÎÄ×ÖÑÕÉ«
-	settextstyle(30, 0, "Î¢ÈíÑÅºÚ");//ÉèÖÃ×ÖºÅ¡¢×ÖÌå
+	timetext.append("ç§’");
+	settextcolor(BLACK);//æ–‡å­—é¢œè‰²
+	settextstyle(30, 0, "å¾®è½¯é›…é»‘");//è®¾ç½®å­—å·ã€å­—ä½“
 	outtextxy(0, 0, timetext.c_str());
 }
 
@@ -453,9 +453,9 @@ void Game::loadGame()
 void Game::MainMenu()
 {
 	if (A.size() || B.size() || C.size() && C.size() != level)
-	{//Ëş²»Îª¿Õ£¬ÔòÔö¼ÓÓÎÏ·¼ÇÂ¼-Ê§°Ü
+	{//å¡”ä¸ä¸ºç©ºï¼Œåˆ™å¢åŠ æ¸¸æˆè®°å½•-å¤±è´¥
 		addRecord(level, stepNum + stepShift, finalTime, 0);
-		saveRecord();//±£´æ¼ÇÂ¼µ½±¾µØ
+		saveRecord();//ä¿å­˜è®°å½•åˆ°æœ¬åœ°
 	}
 	op = menu;
 	clearStep();
