@@ -24,7 +24,7 @@ Game::Game()
 	initgraph(w, h, SHOWCONSOLE);//窗口初始化，带控制台
 	//initgraph(w, h);	//窗口初始化
 	hnd = GetHWnd();		//窗口句柄
-	SetWindowText(hnd, "汉诺塔|南信大的一位咸鱼");//设置窗口标题
+	SetWindowText(hnd, "汉诺塔|南信大的一条咸鱼");//设置窗口标题
 	loadimage(&bkImage, "./sources/bkImage.jpg", 800, 600);//读取背景文件
 	loadimage(&htpImage, "./sources/HowToPlay.png", 800, 600);//读取游戏说明文件
 	setbkmode(TRANSPARENT);//设置背景模式，透明（文字）
