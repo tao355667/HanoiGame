@@ -1,4 +1,7 @@
 # HanoiGame
+
+基于EsayX C++的汉诺塔游戏
+
 面向对象程序设计实践-汉诺塔
 
 IDE：Visual Studio 2022
