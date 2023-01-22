@@ -10,7 +10,7 @@ IDE：Visual Studio 2022
 
 游戏主菜单：
 
-![游戏主菜单](./MD_Pic/MainMenu.png "游戏主菜单")
+<img src="/MD_Pic/MainMenu.png" width="800">
 
 参考资料：
 
